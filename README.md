@@ -20,9 +20,20 @@ Import the plugin and add it to your payload configuration file.
 // Add the plugin to the "plugins" array in your payload config
 {
   // ... Rest of payload config
-  plugins: [labelPopoverPlugin({})]
+  plugins: [
+    labelPopoverPlugin({
+      collections: {
+        examples: true,
+      },
+    }),
+  ]
 }
 ```
+
+The plugin options are optional and allow you to:
+
+- limit the plugin to a subset of collections (`collections`)
+- temporarily disable the UI portion without touching your schema (`disabled`)
 
 ```ts
 // Enable a popover on a field using the `custom` object
@@ -37,7 +48,10 @@ const Examples: CollectionConfig = {
       name: 'title',
       label: 'Hello World',
       custom: {
-        labelPopover: 'This is a test to see if this popover will work and wrap correctly.',
+        labelPopover: {
+          en: 'This is a test to see if this popover will work and wrap correctly.',
+          nl: 'Gebruik me voor korte instructies bij dit veld.',
+        },
         showLabelPopover: true,
       },
     },
@@ -46,32 +60,7 @@ const Examples: CollectionConfig = {
 export default Examples
 ```
 
-### Custom Component for Popover Content
-
-You can also use a custom component to render content inside of the popover.
-
-```tsx
-// CustomPopoverContent.tsx
-import React from 'react'
-
-type Props = {
-  data: string
-}
-
-export const CustomPopoverContent: React.FC<Props> = props => {
-  const { data } = props
-  return <div style={{ color: 'yellow' }}>{data}</div>
-}
-```
-
-Then import and pass the component to the 'labelPopover' property in your field config.
-
-```ts
-      custom: {
-        labelPopover: LabelContent({ data: 'HELLO WORLD!!!' }),
-        showLabelPopover: true,
-      }
-```
+> `labelPopover` supports plain strings or a translation object. Pair it with `showLabelPopover` to opt specific fields into the UI.
 
 ## Contributing
 

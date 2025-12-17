@@ -1,6 +1,11 @@
 dev/tmp
 dev/yarn.lock
 
+# Local artifacts that should never be tracked
+.DS_Store
+.idea/
+node_modules/
+
 # Created by https://www.gitignore.io/api/node,macos,windows,webstorm,sublimetext,visualstudiocode
 
 ### macOS ###
