@@ -9,9 +9,9 @@
 ## Installation
 
 ```bash
-yarn add payload-label-popover
+yarn add payload-label-popover-v3
 # or
-npm install payload-label-popover
+npm install payload-label-popover-v3
 ```
 
 ## Setup
